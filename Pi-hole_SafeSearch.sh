@@ -196,9 +196,9 @@ generate() {
             fi
         done
         # Extra Blocking
-        logger all 'BLOCKING OTHER BAD SITES'
-        silently pihole -b "${badEXACT[@]}"
-        silently pihole --regex "${REGEX[@]}"
+        #logger all 'BLOCKING OTHER BAD SITES'
+        #silently pihole -b "${badEXACT[@]}"
+        #silently pihole --regex "${REGEX[@]}"
         # We do not need to do "pihole restartdns"
         # The above commands reload it every time...
     fi   
@@ -251,11 +251,11 @@ disable() {
     rm -rf "$file"
     logger all 'Removing Config File'
     rm -rf "$conf"
-    logger all 'Unblocking Domains and TLDs'
-    silently pihole regex --delmode "${REGEX[@]}"
-    silently pihole blacklist --delmode "${badEXACT[@]}"
-    logger all 'Restarting DNS'
-    silently pihole restartdns
+    #logger all 'Unblocking Domains and TLDs'
+    #silently pihole regex --delmode "${REGEX[@]}"
+    #silently pihole blacklist --delmode "${badEXACT[@]}"
+    #logger all 'Restarting DNS'
+    #silently pihole restartdns
     logger all 'SafeSearch is Disabled!'
 
 }
