@@ -3,7 +3,7 @@
 # Created by Jayke Peters
 ## Define Global Variables
 ## ENABLE IN PIHOLE?
-YOUTUBE=False
+YOUTUBE=True
 
 me=`basename "$0"`
 VERSION="1.6.1" # Fixed IP Address for Duckduckgo. Added SafeSearch for pixabay..., also fixed spelling error 
@@ -20,20 +20,26 @@ maxRuns=10
 hostRecords=(
     "host-record=forcesafesearch.google.com,216.239.38.120"
     "host-record=safe.duckduckgo.com,54.241.17.246"
-    "host-record=restrict.youtube.com,216.239.38.120"
+    "host-record=restrictmoderate.youtube.com,216.239.38.119"
     "host-record=strict.bing.com,204.79.197.220"
     "host-record=safesearch.pixabay.com,176.9.158.70"
 )
+# YouTube
+# Use either strict or moderate setting
+# strict: restrict.youtube.com
+# moderate: restrictmoderate.youtube.com
 ytSS=(
-   "cname=www.youtube.com,restrict.youtube.com"
-   "cname=m.youtube.com,restrict.youtube.com"
-   "cname=youtubei.googleapis.com,restrict.youtube.com"
-   "cname=youtube.googleapis.com,restrict.youtube.com"
-   "cname=www.youtube-nocookie.com,restrict.youtube.com"
+   "cname=www.youtube.com,restrictmoderate.youtube.com"
+   "cname=m.youtube.com,restrictmoderate.youtube.com"
+   "cname=youtubei.googleapis.com,restrictmoderate.youtube.com"
+   "cname=youtube.googleapis.com,restrictmoderate.youtube.com"
+   "cname=www.youtube-nocookie.com,restrictmoderate.youtube.com"
 )
+# Bing Family Filter
 bingSS=(
     "cname=bing.com,www.bing.com,strict.bing.com"
 )
+# Pihole exact URL blocking
 badEXACT=(
     "www.ecosia.org"
     "images.search.yahoo.com"
@@ -42,13 +48,16 @@ badEXACT=(
     "gibiru.com"
     "www.startpage.com"
 )
+# duckduckgo
 duckduckgoSS=(
     "cname=duckduckgo.com,www.duckduckgo.com,start.duckduckgo.com,safe.duckduckgo.com"
     "cname=duck.com,www.duck.com,safe.duckduckgo.com"
 )
+# Pixabay
 pixabaySS=(
     "cname=pixabay.com,safesearch.pixabay.com"
 )
+# Pihole regex blocking
 REGEX=(
     "(^|\.).+xxx$"
     "(^|\.).+sexy$"
